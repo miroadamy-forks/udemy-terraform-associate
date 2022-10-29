@@ -1,22 +1,11 @@
-# Big image but it's cached on gitpod nodes already
-FROM gitpod/workspace-full:latest
+FROM gitpod/workspace-full
 
-# Install tools as the gitpod user
-USER gitpod
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
-# Install helper tools
-RUN brew update && brew upgrade && brew install \
-    gawk coreutils pre-commit tfenv terraform-docs \
-    tflint tfsec instrumenta/instrumenta/conftest \
-    && brew install --ignore-dependencies cdktf \
-    && brew cleanup
-RUN tfenv install latest && tfenv use latest
-
-# COPY .gitpod.bashrc /home/gitpod/.bashrc.d/custom
-
-# Give back control
-USER root
-#  and revert back to default shell
-#  otherwise adding Gitpod Layer will fail
-SHELL ["/bin/sh", "-c"]
+# install aws-cli v2 and terraform
+RUN sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+  && unzip awscliv2.zip \
+  && sudo ./aws/install \
+  && sudo apt-get update \
+  && sudo apt-get install -y gnupg software-properties-common curl \
+  && curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - \
+  && sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
+  && sudo apt-get install terraform
