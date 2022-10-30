@@ -8,7 +8,7 @@ resource "aws_instance" "example" {
     instance_type = "t2.micro"
 
     tags = {
-      "name" = "Example Instance"
+      "Name" = "Example Instance"
       "date" = "2022-10-30_14:23"
     }
 }
