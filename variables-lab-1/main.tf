@@ -5,7 +5,7 @@ provider "aws" {
 #Create an EC2 Resource Block
 resource "aws_instance" "test_instance" {
     ami = "ami-0648ea225c13e0729"
-    instance_type = "t2.micro"
+    instance_type = var.instance_type
 
     tags = {
       Name = "test_instance_1"
@@ -14,7 +14,7 @@ resource "aws_instance" "test_instance" {
 }
 resource "aws_instance" "test_instance_2" {
   ami = "ami-0648ea225c13e0729"
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
   tags = {
       Name = "test_instance_2"
       environment = "test"
