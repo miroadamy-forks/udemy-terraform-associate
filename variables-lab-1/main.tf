@@ -12,7 +12,7 @@ resource "aws_instance" "test_instance" {
       environment = "test"
   }
 }
-resource "aws_instance" "test_instance" {
+resource "aws_instance" "test_instance_2" {
   ami = "ami-0648ea225c13e0729"
   instance_type = "t2.micro"
   tags = {
