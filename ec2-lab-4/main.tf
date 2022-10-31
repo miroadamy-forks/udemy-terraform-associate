@@ -13,13 +13,13 @@ resource "aws_instance" "example" {
     }
 }
 
-# resource "aws_ebs_volume" "example" {
-#   availability_zone = "eu-west-2a"
-#   size              = 40
-# }
+resource "aws_ebs_volume" "example" {
+  availability_zone = "eu-west-2b"
+  size              = 40
+}
 
-# resource "aws_volume_attachment" "ebs_att" {
-#   device_name = "/dev/sdh"
-#   volume_id   = 
-#   instance_id = 
-# }
+resource "aws_volume_attachment" "ebs_att" {
+  device_name = "/dev/sdh"
+  volume_id   = aws_ebs_volume.example.id
+  instance_id = aws_instance.example.id
+}
