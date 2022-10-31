@@ -1,14 +1,20 @@
 provider "aws" {
-    region = "YOUR REGION"
+    region = "eu-west-2"
 }
 
-resource "aws_instance" "tags-test" {
-    ami = "YOUR AMI"
+#Create an EC2 Resource Block
+resource "aws_instance" "example" {
+    ami = "ami-0648ea225c13e0729"
     instance_type = "t2.micro"
+
+    tags = {
+      "Name" = "Example Instance"
+      "date" = "2022-10-30_14:23"
+    }
 }
 
 # resource "aws_ebs_volume" "example" {
-#   availability_zone = "YOUR AZ"
+#   availability_zone = "eu-west-2a"
 #   size              = 40
 # }
 
