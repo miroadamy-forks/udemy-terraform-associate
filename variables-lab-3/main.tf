@@ -9,7 +9,7 @@ resource "aws_instance" "test_instance" {
 
     tags = {
       Name = "test_instance_1"
-      environment = "test"
+      environment = "test - lab3"
   }
 }
 resource "aws_instance" "test_instance_2" {
@@ -17,6 +17,6 @@ resource "aws_instance" "test_instance_2" {
   instance_type = var.instance_type
   tags = {
       Name = "test_instance_2"
-      environment = "test"
+      environment = "test - lab3"
   }
 }
