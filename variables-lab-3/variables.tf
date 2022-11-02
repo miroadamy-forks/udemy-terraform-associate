@@ -5,5 +5,10 @@ variable "instance_type" {
 
 variable "image_id" {
     type = string
-    default = "YOUR AMI ID"
+}
+
+variable "aws_region" {
+    type = string
+    default = "eu-west-1"
+  
 }

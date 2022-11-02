@@ -1,18 +1,19 @@
 provider "aws" {
-  region = "us-east-1"
+    region = var.aws_region
 }
 
+#Create an EC2 Resource Block
 resource "aws_instance" "test_instance" {
-  ami           = var.image_id
-  instance_type = var.instance_type
-  tags = {
+    ami = var.image_id
+    instance_type = var.instance_type
+
+    tags = {
       Name = "test_instance_1"
       environment = "test"
   }
 }
-
 resource "aws_instance" "test_instance_2" {
-  ami           = var.image_id
+  ami = var.image_id
   instance_type = var.instance_type
   tags = {
       Name = "test_instance_2"
